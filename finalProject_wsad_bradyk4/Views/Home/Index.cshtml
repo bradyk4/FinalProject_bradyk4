@@ -1,0 +1,71 @@
+﻿@model List<Medal>
+@{
+    ViewData["Title"] = "Home";
+}
+<html>
+<head>
+    <title>Kyle's Personal Website</title>
+</head>
+<body>
+    <div class='indexpage'>
+        <header>
+            <img src="~/BW_wrestling.jpg" alt="Me wrestling for Baldwin Wallace University" align="right">
+            <h1>Personal Portfolio Site</h1>
+            <span>by: Kyle Brady</span>
+        </header>
+        <main>
+            <h2>Purpose of This Page</h2>
+            <p>
+                I wanted to create a Web Site that could be viewed by colleagues
+                or potential employers who would like more information about me,
+                the sport of wrestling, and my career and involvement with the sport.
+                This site is a personal portfolio of my personal life, my wrestling
+                career and any associated accomplishments.
+                I have had a somewhat interesting life, I guess you could say,
+                having a major back surgery at 16 years old and being a collegiate
+                wrestler for a year afterward. It will follow my life as I show
+                the viewer the lessons I’ve learned from athletics and academics
+                over the years. Enjoy a selection of stories and events that
+                happened throughout my life making me the person I am today.
+                I believe this site will speak to my character and my ability
+                to succeed in future endeavors.
+            </p>
+        </main>
+    </div>
+    <footer>
+        <p>Posted by: Kyle Brady</p>
+        <p>
+            Contact information: <a href="bradyk4@mail.uc.edu">
+                bradyk4@mail.uc.edu
+            </a>.
+        </p>
+    </footer>
+</body>
+
+<h2>Medals List</h2>
+<a asp-controller="Medal" asp-action="Add">Add New Medal</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Place</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medal in Model)
+        {
+            <tr>
+                <td>@medal.Event</td>
+                <td>@medal.Name</td>
+                <td>@medal.Year</td>
+                <td>@medal.Place</td>
+                <td>
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@medal.MedalId">Edit</a> <a asp-controller="Medal" asp-action="Delete" asp-route-id="@medal.MedalId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</html>

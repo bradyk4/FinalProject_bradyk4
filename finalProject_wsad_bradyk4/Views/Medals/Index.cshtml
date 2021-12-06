@@ -1,0 +1,32 @@
+﻿@model List<Medal>
+@{
+    ViewData["Title"] = "Home";
+}
+<html>
+<h2>Medals List</h2>
+<a asp-controller="Medal" asp-action="Add">Add New Medal</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Place</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medal in Model)
+        {
+            <tr>
+                <td>@medal.Event</td>
+                <td>@medal.Name</td>
+                <td>@medal.Year</td>
+                <td>@medal.Place</td>
+                <td>
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@medal.MedalId">Edit</a> <a asp-controller="Medal" asp-action="Delete" asp-route-id="@medal.MedalId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</html>
